@@ -1,6 +1,6 @@
 
 ReactDOM.render(
-    <App 
+    <App
       numberOfItemsInCart = {state.numberOfItemsInCart}
       products={state.products}
     />
