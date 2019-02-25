@@ -6,3 +6,7 @@ function ProductList(props) {
         product={p} />
     });
 }
+
+ProductList.propTypes = {
+    addItemToCart: PropTypes.array.isRequired
+}

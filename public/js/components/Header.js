@@ -25,10 +25,10 @@ function Header(props){
                         <a href="#">Contact</a>
                     </li>
                     <li>
-                        <a href="#" onClick={()=>props.routeTo("products")}>Products</a>
+                        <a href="#" onClick={(e)=>{e.preventDefault(); props.changeView("products")}}>Products</a>
                     </li>
                     <li >
-                        <a href="#" onClick={()=>props.routeTo("cart")}>Items In Cart ({props.cart.length})</a>
+                        <a href="#" onClick={(e)=>{e.preventDefault(); props.changeView("cart")}}>Items In Cart ({props.cart.length})</a>
                     </li>
                 </ul>
             </div>
@@ -37,4 +37,8 @@ function Header(props){
 
     </nav>
   );
+}
+Header.propTypes={
+    changeView: PropTypes.func.isRequired,
+    cart: PropTypes.array.isRequired
 }

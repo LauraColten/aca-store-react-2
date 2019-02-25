@@ -9,14 +9,15 @@ class App extends React.Component {
             return { shoppingCart: this.state.shoppingCart }
         })
     }
-    routeTo = (route) => {
+    changeView = (route) => {
+        console.log(route)
         this.setState({route:route})
     }
     render() {
         return (
             <div className="App">
-                <Layout shoppingCart={this.props.numberOfItemsInCart} routeTo={this.routeTo}>
-                    <div className="row" style={{display:this.state.route==="products"?"show":"none"}}>
+                <Layout cart={this.state.shoppingCart} changeView={this.changeView}>
+                    <div className="row" style={{display: this.state.route === "products"? "block" :"none" }}>
                         <div className="col-md-3">
                             <p className="lead">Shop Name</p>
                             <div className="list-group">
@@ -32,11 +33,15 @@ class App extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div className="row" style={{display:this.state.route==="cart"?"show":"none"}}>
+                    <div className="row" style={{display:this.state.route === "cart" ? "block":"none"}}>
                         <ShoppingCart shoppingCart={this.state.shoppingCart}/>
                     </div>
                 </Layout>
             </div>
         );
     }
+}
+
+App.propTypes = {
+    products: PropTypes.array.isRequired
 }
